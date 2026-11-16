@@ -380,7 +380,7 @@ class IntersectionEnv(AbstractEnv):
         # r = 0 for south, 1 for west, 2 for north, and 3 for east
 
         # route = self.np_random.choice(range(4), size=2, replace=False)
-        route = [0, self.np_random.choice([1, 2, 3])]
+        route = [2, self.np_random.choice([1, 0, 3])]
         # ----------------------------------------------------------------
 
         route[1] = (route[0] + 2) % 4 if go_straight else route[1]

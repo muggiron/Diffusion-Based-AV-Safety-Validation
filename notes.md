@@ -1,4 +1,4 @@
-# Notes – data-based start states (Stage 1)
+# Notes – data-based initial states (Stage 1)
 
 ## Findings
 

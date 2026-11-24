@@ -6,8 +6,9 @@ import concurrent.futures
 from tqdm import tqdm
 
 # REMEMBER TO EDIT intersection.py !!!!!
-SCENARIO = "SOUTH(AWS8)"
-NUM_SIMULATIONS = 100
+SCENARIO = "NORTH(AWS8)"
+NUM_SIMULATIONS = 10000
+MAX_WORKERS = 5
 SAVE_PATH = "failure_trajectories_" + SCENARIO + ".pt"
 
 def simulate(disturbances, perturbation_scale=0.15):
@@ -216,7 +217,7 @@ def simulate(disturbances, perturbation_scale=0.15):
 
 if __name__ == "__main__":
     failures = []
-    with concurrent.futures.ProcessPoolExecutor() as executor:
+    with concurrent.futures.ProcessPoolExecutor(max_workers=MAX_WORKERS) as executor:
         futures = [executor.submit(simulate, torch.randn(4, 24)) for i in range(NUM_SIMULATIONS)]
 
         for future in tqdm(concurrent.futures.as_completed(futures), total=len(futures)):
